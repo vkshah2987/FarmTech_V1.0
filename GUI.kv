@@ -1,0 +1,215 @@
+ScreenManager:
+    HomeScreen:
+    DataScreen:
+    ControlScreen:
+    GraphScreen:
+
+
+<ControlScreen>:
+    name: 'control'
+    MDLabel:
+        text: 'Welcome to control screen'
+        halign: 'center'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Control"
+            elevation: 10
+            left_action_items: [['arrow-down', lambda x: app.change_screen('home', 'down')]]
+        Widget:
+
+
+
+<HomeScreen>:
+    name: 'home'
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Home"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        Widget:
+
+        MDLabel:
+            text: 'Welcome to FarmTech App. A Perfect Solution for Farmers.'
+            halign: 'center'
+
+        Image:
+            source: 'farm.jpg'
+            size: self.texture_size
+
+        MDBottomAppBar:
+            MDToolbar:
+                mode: 'end'
+                icon: 'power'
+                type: 'bottom'
+                on_action_button:
+                    root.manager.transition.direction = 'up'
+                    root.manager.current = 'control'
+
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: '8dp'
+            padding: '8dp'
+
+            Image:
+                source: 'farm.jpg'
+
+            MDLabel:
+                text: 'FarmTech'
+                font_style: 'Subtitle1'
+                size_hint_y: None
+                height: self.texture_size[1]
+            MDLabel:
+                text: 'A Farmer Friend'
+                font_style: 'Caption'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.1, None)
+                    Button:
+                        text: 'Home'
+                        on_press:
+                            root.manager.current = 'home'
+                            #nav_drawer.set_state('close')
+                    Button:
+                        text:'Data'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'data'
+                            nav_drawer.set_state('close')
+                    Button:
+                        text:'Graph'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'graph'
+                            nav_drawer.set_state('close')
+
+            ScrollView:
+
+<DataScreen>:
+    name: 'data'
+    MDLabel:
+        text: 'Welcome to Data Screen'
+        halign: 'center'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Data"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        Widget:
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: '8dp'
+            padding: '8dp'
+
+            Image:
+                source: 'farm.jpg'
+
+            MDLabel:
+                text: 'FarmTech'
+                font_style: 'Subtitle1'
+                size_hint_y: None
+                height: self.texture_size[1]
+            MDLabel:
+                text: 'A Farmer Friend'
+                font_style: 'Caption'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.1, None)
+                    Button:
+                        text: 'Home'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'home'
+                            nav_drawer.set_state('close')
+                    Button:
+                        text:'Data'
+                        on_press:
+                            #root.manager.transition.direction = 'right'
+                            root.manager.current = 'data'
+                            #nav_drawer.set_state('close')
+                    Button:
+                        text:'Graph'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'graph'
+                            nav_drawer.set_state('close')
+
+            ScrollView:
+
+<GraphScreen>:
+    name: 'graph'
+    MDLabel:
+        text: 'Welcome to graph screen'
+        halign: 'center'
+
+    BoxLayout:
+        orientation: 'vertical'
+        MDToolbar:
+            title: "Graph"
+            elevation: 10
+            left_action_items: [['menu', lambda x: nav_drawer.set_state('open')]]
+        Widget:
+
+    MDNavigationDrawer:
+        id: nav_drawer
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: '8dp'
+            padding: '8dp'
+
+            Image:
+                source: 'farm.jpg'
+
+            MDLabel:
+                text: 'FarmTech'
+                font_style: 'Subtitle1'
+                size_hint_y: None
+                height: self.texture_size[1]
+            MDLabel:
+                text: 'A Farmer Friend'
+                font_style: 'Caption'
+                size_hint_y: None
+                height: self.texture_size[1]
+
+            BoxLayout:
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint:(.1, None)
+                    Button:
+                        text: 'Home'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'home'
+                            nav_drawer.set_state('close')
+                    Button:
+                        text:'Data'
+                        on_press:
+                            root.manager.transition.direction = 'left'
+                            root.manager.current = 'data'
+                            nav_drawer.set_state('close')
+                    Button:
+                        text:'Graph'
+                        on_press:
+                            #root.manager.transition.direction = 'right'
+                            root.manager.current = 'graph'
+                            #nav_drawer.set_state('close')
+
+            ScrollView:
